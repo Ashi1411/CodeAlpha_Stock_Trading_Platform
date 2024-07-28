@@ -31,6 +31,7 @@ public class CodeAlpha_Stock_Trading_Platform{
         //change stock price
         public void changeStockPrice(String stockName , double newPrice){
             stocks.put(stockName, newPrice);
+            System.out.println("Stock Price Updated");
         }
 
         //delete stock
@@ -46,6 +47,7 @@ public class CodeAlpha_Stock_Trading_Platform{
 
         //print all available stocks
         public void printAllStocks(){
+            System.out.println("******All Stocks******");
             Set<String> keySet = stocks.keySet();
             for (String key : keySet){
                 System.out.println(key + " : " + stocks.get(key));
@@ -95,6 +97,7 @@ public class CodeAlpha_Stock_Trading_Platform{
             }
             else{
                 users.get(name).balance = newBalance;
+                System.out.println("Balance Updated");
             }
         }
 
@@ -137,7 +140,7 @@ public class CodeAlpha_Stock_Trading_Platform{
                 if (users.get(name).portfolio.get(stockSymbol) >= qty){
                     users.get(name).balance += price* qty;
                     users.get(name).portfolio.put(stockSymbol, users.get(name).portfolio.get(stockSymbol) - qty);
-                    System.out.println(stockSymbol + " selled");
+                    System.out.println(stockSymbol + " sold");
                 }
                 else{
                     System.out.println("Not enough stocks to sell");
@@ -151,8 +154,9 @@ public class CodeAlpha_Stock_Trading_Platform{
                 System.out.println(name + " not found");
             }
             else{
-                System.out.println("username : " + name);
-                System.out.println("balance amount : " + users.get(name).balance);
+                System.out.println("******User Info******");
+                System.out.println("Username : " + name);
+                System.out.println("Balance amount : " + users.get(name).balance);
                 Set<String> keyset = users.get(name).portfolio.keySet();
                 for (String key : keyset){
                     System.out.println(key + " : " + users.get(name).portfolio.get(key));
@@ -183,9 +187,9 @@ public class CodeAlpha_Stock_Trading_Platform{
         users.buyStock("xyz", "Google", 10);
         users.sellStock("Abc", "Apple", 4);
         System.out.println(users.getPortfolio("Abc"));
+        System.out.println("Balance = " + users.getBalance("Abc"));
         users.printInfo("Abc");
         users.deleteAccount("xyz");
         users.stock.deleteStock("Google");
-        //CodeAlpha_Stock_Trading_Platform
     }
 }
